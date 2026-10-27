@@ -67,4 +67,37 @@ else
     Console.WriteLine($"Ci dispiace, purtroppo l'alunno è stato {BOCCIATO}");
 }
 
+ushort voteMax = 0;
+ushort voteMin = 10;
+ushort voteOverAverenge = 0;
+ushort voteUnderAverenge = 0;
+ushort voteNotSufficient = 0;
 
+foreach (ushort vote in listGrades)
+{
+    // Determino il voto max
+    if (vote > voteMax)
+    {
+        voteMax = vote;
+    }
+    // Determino il voto min
+    if (vote < voteMin)
+    {
+        voteMin = vote;
+    }
+
+    // Determino i voti sopra la media e li conto
+    if (vote >= average) voteOverAverenge++;
+    if (vote < average) voteUnderAverenge++;
+    if (vote < 6) voteNotSufficient++;
+
+}
+
+// Stampa delle statistiche successive
+Console.WriteLine("================================================================================");
+Console.WriteLine($"Il voto massimo è {voteMax}");
+Console.WriteLine($"Il voto minimo è {voteMin}");
+Console.WriteLine($"Il numero dei voti sopra la media è {voteOverAverenge}");
+Console.WriteLine($"Il numero dei voti sotto la media è {voteUnderAverenge}");
+Console.WriteLine($"Il numero dei voti non sufficienti (sotto al 6) è {voteNotSufficient}");
+Console.WriteLine("================================================================================");
